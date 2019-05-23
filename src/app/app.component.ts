@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,23 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'tech-kafi-sentry';
+
+  constructor(private http: HttpClient) {}
+
+  executeRequest() {
+    const url = 'https://techkafi-backend-pitc-techkafi-sentry.ose3.puzzle.ch/api/get';
+    this.http.get(url).subscribe(
+      res => console.log('success response:', res),
+      error => console.error('error response:', error)
+    );
+  }
+
+  badFunction() {
+    encodeURI('\uD800');
+  }
+
+  anotherBadFunction() {
+    throw new Error('another bad');
+  }
+
 }
