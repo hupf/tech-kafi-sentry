@@ -12,11 +12,14 @@ export class AppComponent {
   constructor(private http: HttpClient) {}
 
   executeRequest() {
-    const url = 'https://techkafi-backend-pitc-techkafi-sentry.ose3.puzzle.ch/api/get';
-    this.http.get(url).subscribe(
-      res => console.log('success response:', res),
-      error => console.error('error response:', error)
-    );
+    const url =
+      'https://techkafi-backend-pitc-techkafi-sentry.ose3.puzzle.ch/api/get';
+    this.http
+      .get(url)
+      .subscribe(
+        res => console.log('success response:', res),
+        error => console.error('error response:', error)
+      );
   }
 
   badFunction() {
@@ -26,5 +29,4 @@ export class AppComponent {
   anotherBadFunction() {
     throw new Error('another bad');
   }
-
 }
