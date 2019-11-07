@@ -4,11 +4,12 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build": "ng build --prod",
+    "postbuild": "echo \"window.version = '$(git rev-parse HEAD)';\" > dist/tech-kafi-sentry/version.js",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "deploy": "ng build --prod --base-href \"/tech-kafi-sentry/\" && npx angular-cli-ghpages --dir=dist/tech-kafi-sentry"
+    "deploy": "npm run build -- --base-href \"/tech-kafi-sentry/\" && npx angular-cli-ghpages --dir=dist/tech-kafi-sentry"
   },
   "private": true,
   "dependencies": {
