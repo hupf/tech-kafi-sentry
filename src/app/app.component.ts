@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { captureMessage, Severity } from '@sentry/browser';
 
 @Component({
   selector: 'app-root',
@@ -28,5 +29,9 @@ export class AppComponent {
 
   anotherBadFunction() {
     throw new Error('another bad');
+  }
+
+  customMessage() {
+    captureMessage('This is not good', Severity.Info);
   }
 }
