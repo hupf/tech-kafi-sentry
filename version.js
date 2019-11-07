@@ -1,1 +1,1 @@
-window.version = '44e0722c9f0ff35a46b94f79bbef8da90000b6cc';
+window.version = 'b2f7f72c3b96c4aa96484f6b383de6ce39f2d3fa';
