@@ -28,7 +28,7 @@ export class AppComponent {
   }
 
   anotherBadFunction() {
-    throw new Error('another bad');
+    throw new Error('Another bad');
   }
 
   customMessage() {
