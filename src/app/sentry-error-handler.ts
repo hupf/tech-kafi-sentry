@@ -5,9 +5,9 @@ const VERSION = (window as any).version;
 console.log('VERSION', VERSION);
 
 Sentry.init({
+  // dsn: 'https://7a1b1091ca034a64ace2d5a030fab531@sentry.puzzle.ch/24',
   dsn:
     'https://7a1b1091ca034a64ace2d5a030fab531@sentry-pitc-sentry09-test.ocp.puzzle.ch/24',
-  // dsn: 'https://7a1b1091ca034a64ace2d5a030fab531@sentry.puzzle.ch/24',
   // dsn: 'https://fa84792d5cc24bed859936aeadabaf15@sentry.io/1819492',
   environment: 'integration',
   release: VERSION
