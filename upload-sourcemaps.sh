@@ -22,7 +22,8 @@ VERSION=`git rev-parse HEAD`
 
 # Directory with the minified source files (.js) and their
 # corresponding source maps (.map)
-SOURCES_PATH=`ng config "projects.$(ng config defaultProject).architect.build.options.outputPath"`
+NPM_BIN=`npm bin`
+SOURCES_PATH=`$NPM_BIN/ng config "projects.$($NPM_BIN/ng config defaultProject).architect.build.options.outputPath"`
 
 # URL prefix, '~' stands for the protocol/hostname part
 # (trailing slash is mandatory!)
@@ -33,7 +34,6 @@ if [ "$1" == "delete" ]; then
   sentry-cli releases files $VERSION delete --all
 else
   # sentry-cli releases new $VERSION
-  # sentry-cli releases set-commits $VERSION --auto
 
   # The upload-sourcemaps command implicitly creates a release if not
   # existing, `releases new` is therefore not necessary if only
@@ -45,5 +45,6 @@ else
              $SOURCES_PATH
              # --url-prefix="$URL_PREFIX" \
 
-  # sentry-cli releases finalize $VERSION
+  sentry-cli releases set-commits $VERSION --auto
+  sentry-cli releases finalize $VERSION
 fi
