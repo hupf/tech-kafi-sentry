@@ -20,4 +20,3 @@ export class SentryErrorHandler implements ErrorHandler {
     Sentry.showReportDialog({ eventId });
   }
 }
-console.log('schubidu4');
