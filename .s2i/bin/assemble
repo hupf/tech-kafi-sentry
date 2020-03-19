@@ -8,6 +8,8 @@ if [[ "$1" == "-h" ]]; then
   exec /usr/libexec/s2i/usage
 fi
 
+mkdir -p node_modules/.bin
+
 /usr/libexec/s2i/restore-artifacts
 /usr/libexec/s2i/install-source
 /usr/libexec/s2i/setup-nginx-conf
