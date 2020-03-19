@@ -12,10 +12,7 @@
     "deploy": "npx now dist/tech-kafi-sentry/",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e",
-    "legacy:build:prod": "npm run build -- --prod --base-href \"/tech-kafi-sentry/\"",
-    "legacy:predeploy": "npm run build:prod && npm run sentry:sourcemaps && rm dist/tech-kafi-sentry/*.map",
-    "legacy:deploy": "npx angular-cli-ghpages --dir=dist/tech-kafi-sentry"
+    "e2e": "ng e2e"
   },
   "private": true,
   "dependencies": {

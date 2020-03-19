@@ -1,0 +1,9 @@
+#!/bin/bash -e
+
+echo "---> Builing static assets..."
+
+NPM_BIN=`npm bin`
+SOURCES_PATH=`$NPM_BIN/ng config "projects.$($NPM_BIN/ng config defaultProject).architect.build.options.outputPath"`
+
+npm run build
+mv $SOURCE_PATH $SOURCES_PATH/..
