@@ -13,7 +13,24 @@ fi
 /usr/libexec/s2i/setup-nginx-conf
 /usr/libexec/s2i/setup-basic-auth
 /usr/libexec/s2i/install-deps
-./compile-dist # Use custom build script
+
+
+# Replace /usr/libexec/s2i/compile-dist
+echo "---> Building static assets..."
+
+NPM_BIN=`npm bin`
+SOURCES_PATH=`$NPM_BIN/ng config "projects.$($NPM_BIN/ng config defaultProject).architect.build.options.outputPath"`
+
+npm run build
+mv $SOURCE_PATH/* $SOURCES_PATH/..
+rm -rf $SOURCE_PATH
+ls -l $SOURCE_PATH/..
+
+echo "---> Uploading source maps..."
+
+# TODO
+
+
 /usr/libexec/s2i/remove-temp-files
 
 echo "---> Finished"
