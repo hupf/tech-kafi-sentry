@@ -18,10 +18,10 @@ mkdir -p node_modules/.bin
 
 
 # Replace /usr/libexec/s2i/compile-dist
-echo "---> Building static assets..."
+NG_CMD="./node_modules/@angular/cli/bin/ng"
+SENTRY_CMD="./node_modules/@sentry/cli/bin/sentry-cli"
 
-NG_CMD="node_modules/@angular/cli/bin/ng"
-SENTRY_CMD="node_modules/@sentry/cli/bin/sentry-cli"
+echo "---> Compiling your static assets..."
 
 SOURCES_PATH=`$NG_CMD config "projects.$($NG_CMD config defaultProject).architect.build.options.outputPath"`
 
