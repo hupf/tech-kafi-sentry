@@ -18,6 +18,8 @@ mkdir -p node_modules/.bin
 
 
 # Replace /usr/libexec/s2i/compile-dist
+ls -l ./node_modules/
+ls -l ./node_modules/@angular
 NG_CMD="./node_modules/@angular/cli/bin/ng"
 SENTRY_CMD="./node_modules/@sentry/cli/bin/sentry-cli"
 
