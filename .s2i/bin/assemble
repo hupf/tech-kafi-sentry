@@ -20,12 +20,10 @@ echo "---> Building static assets..."
 
 NPM_BIN=`npm bin`
 echo "current dir"
-ls -l .
+ls -la .
 
 echo "node_modules:"
-ls -l node_modules
-echo "prefix"
-npm config get prefix
+ls -la node_modules
 echo "NPM_BIN:"
 ls -l $NPM_BIN
 SOURCES_PATH=`$NPM_BIN/ng config "projects.$($NPM_BIN/ng config defaultProject).architect.build.options.outputPath"`
