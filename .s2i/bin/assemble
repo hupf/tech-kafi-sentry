@@ -20,14 +20,12 @@ mkdir -p node_modules/.bin
 # Replace /usr/libexec/s2i/compile-dist
 echo "---> Building static assets..."
 
-NPM_BIN=`npm bin`
+NG_CMD="node_modules/@angular/cli/bin/ng"
+SENTRY_CMD="node_modules/@sentry/cli/bin/sentry-cli"
 
-NPM_PREFIX=`npm config get prefix`
-echo "prefix dir"
-ls -la $NPM_PREFIX/bin
-echo "NPM_BIN:"
-ls -l $NPM_BIN
-SOURCES_PATH=`$NPM_BIN/ng config "projects.$($NPM_BIN/ng config defaultProject).architect.build.options.outputPath"`
+SOURCES_PATH=`$NG_CMD config "projects.$($NG_CMD config defaultProject).architect.build.options.outputPath"`
+
+echo "SOURCES_PATH: $SOURCES_PATH"
 
 npm run build
 mv $SOURCE_PATH/* $SOURCES_PATH/..
