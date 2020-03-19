@@ -21,11 +21,9 @@ mkdir -p node_modules/.bin
 echo "---> Building static assets..."
 
 NPM_BIN=`npm bin`
-echo "current dir"
-ls -la .
 
-echo "node_modules:"
-ls -la node_modules
+echo "prefix"
+npm config get prefix
 echo "NPM_BIN:"
 ls -l $NPM_BIN
 SOURCES_PATH=`$NPM_BIN/ng config "projects.$($NPM_BIN/ng config defaultProject).architect.build.options.outputPath"`
