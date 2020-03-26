@@ -20,6 +20,8 @@ mkdir -p node_modules/.bin
 
 
 # Replace /usr/libexec/s2i/compile-dist with custom script:
+echo "env variables..."
+env
 
 export PATH=`npm bin`:$PATH
 SOURCES_PATH=`ng config "projects.$(ng config defaultProject).architect.build.options.outputPath"`
