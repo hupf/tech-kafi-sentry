@@ -23,7 +23,7 @@ mkdir -p node_modules/.bin
 
 export PATH=`npm bin`:$PATH
 SOURCES_PATH=`ng config "projects.$(ng config defaultProject).architect.build.options.outputPath"`
-DIST_PATH=$SOURCES_PATH/..
+DIST_PATH=dist
 
 echo "---> Compiling your static assets..."
 
@@ -36,6 +36,7 @@ ls -l $DIST_PATH
 
 echo "---> Uploading source maps..."
 
+echo "SENTRY_URL=$SENTRY_URL"
 # TODO
 
 
