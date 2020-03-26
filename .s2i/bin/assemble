@@ -23,13 +23,16 @@ mkdir -p node_modules/.bin
 
 export PATH=`npm bin`:$PATH
 SOURCES_PATH=`ng config "projects.$(ng config defaultProject).architect.build.options.outputPath"`
+DIST_PATH=`$SOURCES_PATH`/..
 
 echo "---> Compiling your static assets..."
 
 npm run build
-mv $SOURCE_PATH/* $SOURCES_PATH/..
-rm -rf $SOURCE_PATH
-ls -l $SOURCE_PATH/..
+
+# Move sources from dist/<project> into dist/
+mv $SOURCES_PATH/* $DIST_PATH
+rm -rf $SOURCES_PATH
+ls -l $DIST_PATH
 
 echo "---> Uploading source maps..."
 
