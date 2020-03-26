@@ -1,8 +1,8 @@
 #!/bin/bash -e
 
-# Don't use production environment, since we want to install the
+# Don't use NODE_ENV=production, since we want to install the
 # devDependencies
-#export NODE_ENV=production
+export NODE_ENV=development
 
 if [[ "$1" == "-h" ]]; then
   # If the 's2i-nodejs-nginx' assemble script is executed with '-h' flag,
