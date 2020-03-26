@@ -22,14 +22,9 @@ mkdir -p node_modules/.bin
 # Replace /usr/libexec/s2i/compile-dist
 
 export PATH=`npm bin`:$PATH
-echo "npm bin dir:"
-ls -l `npm bin`
 SOURCES_PATH=`ng config "projects.$(ng config defaultProject).architect.build.options.outputPath"`
-echo "SOURCES_PATH: $SOURCES_PATH"
 
 echo "---> Compiling your static assets..."
-
-
 
 npm run build
 mv $SOURCE_PATH/* $SOURCES_PATH/..
