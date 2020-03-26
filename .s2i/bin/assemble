@@ -19,11 +19,13 @@ mkdir -p node_modules/.bin
 /usr/libexec/s2i/install-deps
 
 
-# Replace /usr/libexec/s2i/compile-dist
+# Replace /usr/libexec/s2i/compile-dist with custom script:
 
 export PATH=`npm bin`:$PATH
 SOURCES_PATH=`ng config "projects.$(ng config defaultProject).architect.build.options.outputPath"`
 DIST_PATH=dist
+VERSION=`git rev-parse HEAD`
+echo "VERSION=$VERSION"
 
 echo "---> Compiling your static assets..."
 
@@ -32,12 +34,20 @@ npm run build
 # Move sources from dist/<project> into dist/
 mv $SOURCES_PATH/* $DIST_PATH
 rm -rf $SOURCES_PATH
-ls -l $DIST_PATH
 
 echo "---> Uploading source maps..."
 
-echo "SENTRY_URL=$SENTRY_URL"
-# TODO
+sentry-cli releases files $VERSION upload-sourcemaps \
+           --ext=.js \
+           --ext=.map \
+           --no-rewrite \
+           $DIST_PATH
+sentry-cli releases finalize $VERSION
+
+echo "---> Deleting local source maps..."
+rm $DIST_PATH/*.map
+
+ls -la $DIST_PATH
 
 
 /usr/libexec/s2i/remove-temp-files
